@@ -29,7 +29,7 @@ class CrawlController extends Controller
     public function crawl(CrawlRequest $request): JsonResponse
     {
         $url = rtrim($request->url, '/');
-
+        $items = [];
         try {
             $this->crawlService->startCrawling($url);
 
@@ -40,7 +40,8 @@ class CrawlController extends Controller
             ]);
         } catch (Exception $e) {
             return response()->json([
-                'msg' => $e->getMessage(),
+                'msg' => 'something error! please try again',
+                'items' => $items,
             ], 400);
         }
     }
@@ -69,7 +70,7 @@ class CrawlController extends Controller
             ]);
         } catch (Exception $e) {
             return response()->json([
-                'msg' => 'internal error! try again later',
+                'msg' => 'something error! please try again',
             ], 400);
         }
     }

@@ -28,18 +28,15 @@ class CrawlService
         try {
              Crawler::create()
                 ->ignoreRobots()
-                ->setConcurrency(30)
                 ->setMaximumDepth(1)
-                ->setMaximumResponseSize(1024 * 1024 * 3)
-                ->setTotalCrawlLimit(60)
-                ->setDelayBetweenRequests(500)
-                ->setParseableMimeTypes(['text/html'])
+//                ->setMaximumResponseSize(1024 * 1024 * 10)
+                ->setTotalCrawlLimit(40)
                 ->setCrawlProfile(new CrawlInternalUrls($url))
                 ->setCrawlObserver(new MyCrawlObserver($url))
                 ->startCrawling($url);
 
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+
         }
     }
 
