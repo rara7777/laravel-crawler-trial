@@ -11,19 +11,20 @@ Copy `.env.example` to `.env` and then config DB connection
 cp .env.example .env
 ```
 
-Generate key
-```
-php artisan key:generate
-```
-
 Install dependencies
 ```
 composer install
 ```
 Install puppeteer for screenshot feature
 ```
-npm install puppeteer --location=globel
+npm install puppeteer --location=global
 ```
+
+Generate key
+```
+php artisan key:generate
+```
+
 Run migration
 ```
 php artisan migrate
